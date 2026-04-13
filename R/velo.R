@@ -107,7 +107,7 @@ calcul_distribution_semaine <- function(trajet){
 #' @importFrom dplyr mutate
 #' @importFrom forcats fct_recode
 #' @importFrom ggplot2 ggplot aes geom_col
-#'#' @export
+#' @export
 plot_distribution_semaine <- function(trajet) {
   trajet_weekday <- trajet |>
     filtre_anomalie() |>
@@ -137,15 +137,21 @@ plot_distribution_semaine <- function(trajet) {
 #' à un ou plusieurs numéros de boucle.
 #'
 #' @param data Un data.frame contenant les données de comptage vélo (ex: df_velo)
-#' @param boucle Un vecteur de numéros de boucle à filtrer (ex: c("880", "881"))
+#' @param boucle Un vecteur de numéros de boucle à filtrer (ex: c("880", "881")), il sera nulle par défaut et renverra le data.frame complet
 #'
 #' @return Un data.frame filtré contenant uniquement les boucles sélectionnées
 #' @export
-filtrer_trajet <- function(data, boucle) {
+filtrer_trajet <- function(data, boucle = NULL) {
 
   # Vérification que la colonne existe
   if (!"Numéro de boucle" %in% colnames(data)) {
     stop("La colonne 'Numéro de boucle' est absente du dataset.")
+  }
+
+
+  # Cas où aucun filtre n'est demandé
+  if (is.null(boucle) || length(boucle) == 0 || all(is.na(boucle))) {
+    return(data)
   }
 
   # Liste des boucles existantes

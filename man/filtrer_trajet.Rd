@@ -4,12 +4,12 @@
 \alias{filtrer_trajet}
 \title{Filtrer les données vélo selon un ou plusieurs numéros de boucle}
 \usage{
-filtrer_trajet(data, boucle)
+filtrer_trajet(data, boucle = NULL)
 }
 \arguments{
 \item{data}{Un data.frame contenant les données de comptage vélo (ex: df_velo)}
 
-\item{boucle}{Un vecteur de numéros de boucle à filtrer (ex: c("880", "881"))}
+\item{boucle}{Un vecteur de numéros de boucle à filtrer (ex: c("880", "881")), il sera nulle par défaut et renverra le data.frame complet}
 }
 \value{
 Un data.frame filtré contenant uniquement les boucles sélectionnées

@@ -34,7 +34,7 @@ Un data frame avec 960 lignes et 32 colonnes :
 \item{22}{Nombre de passages entre 22h00 et 22h59}
 \item{23}{Nombre de passages entre 23h00 et 23h59}
 \item{Total}{Nombre total de passages sur la journée}
-\item{Probabilité de présence d'anomalies}{Score indiquant la probabilité qu'un comptage soit anormal}
+\item{Probabilité de présence d'anomalies}{None,Faible,Forte}
 \item{Jour de la semaine}{Jour de la semaine (lundi, mardi, etc.)}
 \item{Boucle de comptage}{Nom ou libellé de la boucle}
 \item{Date formatée}{Date convertie au bon format R (Date)}
