@@ -5,11 +5,13 @@
 \title{Cette fonction compte le nombre total de trajets par jour de la semaine,
 pondéré par la colonne \code{Total}.}
 \usage{
-calcul_distribution_semaine(trajet)
+calcul_distribution_semaine(trajet, filtre = TRUE)
 }
 \arguments{
 \item{trajet}{Un data.frame ou tibble contenant les colonnes
 \verb{Jour de la semaine} et \code{Total}.}
+
+\item{filtre}{un booléen true/false qui filtre les données.}
 }
 \value{
 Un tibble avec deux colonnes : le jour de la semaine et le nombre

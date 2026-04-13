@@ -75,7 +75,7 @@ test_that("filtrer_trajet conserve la bonne boucle", {
 })
 
 test_that("calcul_distribution_semaine regroupe bien par jour", {
-  res <- calcul_distribution_semaine(df_test)
+  res <- calcul_distribution_semaine(df_test,filtre=TRUE)
   # Dans donnees_test, on a le jour 1 et le jour 2, il doit donc y avoir 2 lignes de résultat
   expect_equal(nrow(res), 2)
   # La somme du jour 2 est de 20
