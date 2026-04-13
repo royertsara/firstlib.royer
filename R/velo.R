@@ -131,4 +131,39 @@ plot_distribution_semaine <- function(trajet) {
 }
 
 
+#' Filtrer les données vélo selon un ou plusieurs numéros de boucle
+#'
+#' Cette fonction sélectionne uniquement les lignes du dataset correspondant
+#' à un ou plusieurs numéros de boucle.
+#'
+#' @param data Un data.frame contenant les données de comptage vélo (ex: df_velo)
+#' @param boucle Un vecteur de numéros de boucle à filtrer (ex: c("880", "881"))
+#'
+#' @return Un data.frame filtré contenant uniquement les boucles sélectionnées
+#' @export
+filtrer_trajet <- function(data, boucle) {
+
+  # Vérification que la colonne existe
+  if (!"Numéro de boucle" %in% colnames(data)) {
+    stop("La colonne 'Numéro de boucle' est absente du dataset.")
+  }
+
+  # Liste des boucles existantes
+  boucles_valides <- unique(data[["Numéro de boucle"]])
+
+  # Boucles demandées mais inexistantes
+  boucles_invalides <- boucle[!boucle %in% boucles_valides]
+
+  if (length(boucles_invalides) > 0) {
+    stop(
+      paste0(
+        "Les numéros de boucle suivants n'existent pas dans le dataset : ",
+        paste(boucles_invalides, collapse = ", ")
+      )
+    )
+  }
+
+  # Filtrage
+  data[data[["Numéro de boucle"]] %in% boucle, ]
+}
 
