@@ -1,0 +1,57 @@
+---
+title: "filtrer_visualiser"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{filtrer_visualiser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup,include=FALSE}
+library(firstlib.royer)
+library(dplyr)
+library(ggplot2)
+```
+
+#Introduction
+Cette vignette montre comment :
+- filtrer les données df_velo sur un ou plusieurs numéros de boucle
+- produire un graphique simple à partir des données filtrées
+Les données df_velo sont fournies directement dans le package.
+
+```{r}
+data("df_velo")
+head(df_velo)
+
+```
+
+# Filtrer les données sur une boucle
+
+La fonction filtrer_trajet() permet de sélectionner uniquement les lignes correspondant à une ou plusieurs boucles.\
+
+Par exemple, pour filtrer la boucle 880 :
+```{r}
+df_880 <- filtrer_trajet(df_velo, boucle = "880")
+head(df_880)
+```
+
+Pour filtrer plusieurs boucles :
+
+```{r}
+df_multi <- filtrer_trajet(df_velo, boucle = c("880", "881"))
+head(df_multi)
+```
+
+# Visualiser les données filtrées
+```{r}
+plot_distribution_semaine(df_880)
+```
+
+

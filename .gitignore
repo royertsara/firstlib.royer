@@ -6,3 +6,5 @@
 .quarto
 
 velo.csv
+inst/doc
+docs
