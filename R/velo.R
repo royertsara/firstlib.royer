@@ -81,6 +81,7 @@ trouver_trajet_max <- function(trajet){
 #'
 #' @param trajet Un data.frame ou tibble contenant les colonnes
 #'   `Jour de la semaine` et `Total`.
+#'@param filtre un booléen true/false qui filtre les données.
 #'
 #' @return Un tibble avec deux colonnes : le jour de la semaine et le nombre
 #'   total de trajets.
@@ -88,10 +89,18 @@ trouver_trajet_max <- function(trajet){
 #' @importFrom dplyr count
 #'
 #' @export
-calcul_distribution_semaine <- function(trajet){
-  trajet |>
+calcul_distribution_semaine <- function(trajet,filtre=TRUE){
+  if(filtre==FALSE){
+    x<-trajet
+  } else{
+    x<-filtre_anomalie(trajet)
+  }
+
+  final<-x|>
     count(`Jour de la semaine`, wt = Total, sort = TRUE, name = "trajets")
-}
+return(final)
+  }
+
 
 #-------- Visualiser la distribution des trajets par jour de la semaine
 #'
